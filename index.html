@@ -22,14 +22,16 @@
             <header>
                 <h2>Buscar Usuário</h2>
                 <p class="search-hint">Digite o nome de usuário do GitHub e tenha acesso aos dados do perfil</p>
-                <input type="text" id="input-search" placeholder="Digite o nome do usuário no GitHub">
+                <label class="sr-only" for="input-search">Nome de usuário do GitHub</label>
+                <input type="search" id="input-search" placeholder="Digite o nome do usuário no GitHub" autocomplete="off">
                 
-                <input type="button" value="Buscar" id="btn-search">
+                <button type="button" id="btn-search">Buscar</button>
             </header>
 
             <div class="profile-results"></div>
         </section>
     </main>
+    <script src="src/js/index.js" defer></script>
 </body>
 
 </html>

@@ -26,6 +26,16 @@
   .container header #btn-search {
     max-width: 100%;
   }
+
+  .profile-card {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .profile-info {
+    width: 100%;
+  }
   
   .repositories ul { 
     grid-template-columns: 1fr; 
@@ -69,9 +79,13 @@
     padding: var(--spacing-md); 
   }
   
-  .container .profile-data .info img {
+  .profile-avatar {
     width: 8rem;
     height: 8rem;
+  }
+
+  .profile-stats {
+    gap: var(--spacing-md);
   }
   
   .container .profile-data .info h1 {
@@ -102,7 +116,7 @@
     font-size: var(--font-md);
   }
   
-  .container .profile-data .info img {
+  .profile-avatar {
     width: 7rem;
     height: 7rem;
   }
@@ -123,7 +137,7 @@
     padding: var(--spacing-sm);
   }
   
-  .container .profile-data .info img {
+  .profile-avatar {
     width: 6rem;
     height: 6rem;
   }
