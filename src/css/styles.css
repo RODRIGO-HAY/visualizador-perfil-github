@@ -165,10 +165,6 @@ main {
   max-width: 42rem;
   margin: var(--spacing-xl) auto 0;
   padding: var(--spacing-xl);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--card);
-  box-shadow: var(--shadow-sm);
 }
 
 .profile-avatar {
