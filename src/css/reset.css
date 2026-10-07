@@ -1,18 +1,27 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-a{
-    text-decoration: none;
-    color: #FFFFFF;
+html {
+  scroll-behavior: smooth;
 }
 
-ul{
-    list-style: none;
+a {
+  text-decoration: none;
+  color: #ffffff;
 }
 
-img{
-    max-width: 100%;
+button,
+input {
+  font: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
 }

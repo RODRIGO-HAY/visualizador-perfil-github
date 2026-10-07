@@ -1,37 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Visualizador de Perfil do GitHub</title>
 
-    <link rel="stylesheet" href="src/css/reset.css">
-    <link rel="stylesheet" href="src/css/styles.css">
-    <link rel="stylesheet" href="src/css/animations.css">
-    <link rel="stylesheet" href="src/css/responsive.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.14.0/devicon.min.css">
-</head>
+    <link rel="stylesheet" href="src/css/reset.css" />
+    <link rel="stylesheet" href="src/css/styles.css" />
+    <link rel="stylesheet" href="src/css/animations.css" />
+    <link rel="stylesheet" href="src/css/responsive.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.14.0/devicon.min.css"
+    />
+  </head>
 
-<body>
+  <body>
     <main>
-        <i class="devicon-github-original"></i>
+      <i class="devicon-github-original" aria-hidden="true"></i>
 
-        <section class="container">
-            <header>
-                <h2>Buscar Usuário</h2>
-                <p class="search-hint">Digite o nome de usuário do GitHub e tenha acesso aos dados do perfil</p>
-                <label class="sr-only" for="input-search">Nome de usuário do GitHub</label>
-                <input type="search" id="input-search" placeholder="Digite o nome do usuário no GitHub" autocomplete="off">
-                
-                <button type="button" id="btn-search">Buscar</button>
-            </header>
+      <section class="container" aria-label="Busca de usuários do GitHub">
+        <header>
+          <h2>Buscar Usuário</h2>
+          <p class="search-hint">
+            Digite o nome de usuário do GitHub e tenha acesso aos dados do perfil
+          </p>
 
-            <div class="profile-results"></div>
-        </section>
+          <label class="sr-only" for="input-search">Nome de usuário do GitHub</label>
+          <input
+            type="search"
+            id="input-search"
+            placeholder="Digite o nome do usuário no GitHub"
+            autocomplete="off"
+          />
+
+          <button type="button" id="btn-search">Buscar</button>
+        </header>
+
+        <div class="profile-results" aria-live="polite"></div>
+      </section>
     </main>
-    <script src="src/js/index.js" defer></script>
-</body>
 
+    <script src="src/js/index.js" defer></script>
+  </body>
 </html>

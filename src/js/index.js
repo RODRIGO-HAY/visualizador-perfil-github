@@ -4,17 +4,21 @@ const profileResult = document.querySelector('.profile-results');
 
 const BASE_URL = 'https://api.github.com/';
 
+const setTextContent = (element, value, fallback = '') => {
+  element.textContent = value ?? fallback;
+};
+
 const showMessage = (message, type = 'info') => {
   profileResult.replaceChildren();
+
   const messageElement = document.createElement('p');
   messageElement.className = `profile-message ${type}`;
   messageElement.textContent = message;
+
   profileResult.append(messageElement);
 };
 
 const showProfile = (userData) => {
-  profileResult.innerHTML = '';
-
   const card = document.createElement('article');
   card.className = 'profile-card';
   card.innerHTML = `
@@ -30,20 +34,29 @@ const showProfile = (userData) => {
       </dl>
       <p class="profile-location"></p>
       <a class="profile-link" target="_blank" rel="noopener noreferrer">Ver perfil no GitHub</a>
-    </div>`;
+    </div>
+  `;
 
   const avatar = card.querySelector('.profile-avatar');
+  const title = card.querySelector('h2');
+  const login = card.querySelector('.profile-login');
+  const bio = card.querySelector('.profile-bio');
+  const stats = card.querySelectorAll('.profile-stats dd');
+  const location = card.querySelector('.profile-location');
+  const profileLink = card.querySelector('.profile-link');
+
   avatar.src = userData.avatar_url;
   avatar.alt = `Avatar de ${userData.login}`;
-  card.querySelector('h2').textContent = userData.name || userData.login;
-  card.querySelector('.profile-login').textContent = `@${userData.login}`;
-  card.querySelector('.profile-bio').textContent = userData.bio || 'Este usuário não possui uma bio cadastrada.';
-  card.querySelectorAll('.profile-stats dd')[0].textContent = userData.public_repos;
-  card.querySelectorAll('.profile-stats dd')[1].textContent = userData.followers;
-  card.querySelectorAll('.profile-stats dd')[2].textContent = userData.following;
-  card.querySelector('.profile-location').textContent = userData.location ? `Localização: ${userData.location}` : '';
-  card.querySelector('.profile-link').href = userData.html_url;
-  profileResult.append(card);
+  setTextContent(title, userData.name || userData.login);
+  setTextContent(login, `@${userData.login}`);
+  setTextContent(bio, userData.bio || 'Este usuário não possui uma bio cadastrada.');
+  stats[0].textContent = userData.public_repos;
+  stats[1].textContent = userData.followers;
+  stats[2].textContent = userData.following;
+  location.textContent = userData.location ? `Localização: ${userData.location}` : '';
+  profileLink.href = userData.html_url;
+
+  profileResult.replaceChildren(card);
 };
 
 const searchUser = async () => {
@@ -57,12 +70,16 @@ const searchUser = async () => {
   try {
     btnSearch.disabled = true;
     showMessage('Carregando...');
+
     const response = await fetch(`${BASE_URL}users/${encodeURIComponent(username)}`);
 
     if (!response.ok) {
-      showMessage(response.status === 403
-        ? 'Limite de requisições da API atingido. Tente novamente mais tarde.'
-        : 'Usuário não encontrado.', 'error');
+      showMessage(
+        response.status === 403
+          ? 'Limite de requisições da API atingido. Tente novamente mais tarde.'
+          : 'Usuário não encontrado.',
+        'error'
+      );
       return;
     }
 
